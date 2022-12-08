@@ -4,7 +4,7 @@ from django.shortcuts import render
 import pytesseract
 
 # import summarize to summarize the ocred text
-from gensim.summarization.summarizer import summarize
+from summarizer import summarizer
 
 from .forms import ImageUpload
 import os
@@ -13,9 +13,10 @@ import os
 from PIL import Image
 
 from django.conf import settings
-
-
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
+@csrf_exempt
 def index(request):
     text = ""
     summarized_text = ""
@@ -35,8 +36,8 @@ def index(request):
                 text = text.decode()
 
                 # Summary (0.1% of the original content).
-                summarized_text = summarize(text, ratio=0.1)
-                os.remove(pathz)
+                # summarized_text = summarizer.summarize('',text, count=2)
+                # os.remove(pathz)
             except:
                 message = "check your filename and ensure it doesn't have any space or check if it has any text"
 
@@ -45,4 +46,9 @@ def index(request):
         'summarized_text': summarized_text,
         'message': message
     }
-    return render(request, 'formpage.html', context)
+    # get(context)
+    # return render(request, 'formpage.html', context)
+    return JsonResponse(context)
+# def get(context):
+#     return JsonResponse(context)
+
