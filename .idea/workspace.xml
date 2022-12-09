@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eabaed7a-ec8c-4dfd-a2aa-9983b7864941" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Picture1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Picture1_VhQttzh.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Picture1_WSh5dy4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Picture1_dPBZ9co.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Picture1_puooL6v.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Picture1_q860B4h.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Picture1_xXJaj2e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Screen_Shot_2022-12-08_at_12.29.45.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Screen_Shot_2022-12-08_at_12.29.45_Tgsx8bb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Screen_Shot_2022-12-08_at_12.29.45_qp8a5fn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Screen_Shot_2022-12-08_at_12.31.44.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Screen_Shot_2022-12-08_at_12.31.44_G7UbhpG.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Screen_Shot_2022-12-08_at_12.31.44_kQPeTxB.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/Screen_Shot_2022-12-08_at_12.34.50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/exxx.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/exxx2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/exxx2_az0W1Wi.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/exxx_vR29c59.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/음식-English-1-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oands/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/oands/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ocrandsummarize/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ocrandsummarize/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +64,7 @@
       <workItem from="1670488963767" duration="163000" />
       <workItem from="1670496043050" duration="482000" />
       <workItem from="1670497797516" duration="619000" />
-      <workItem from="1670549154830" duration="8430000" />
+      <workItem from="1670549154830" duration="10990000" />
     </task>
     <servers />
   </component>
