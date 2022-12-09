@@ -1,2 +1,2 @@
 // Procfile
-web: gunicorn ocrandsummarize2.wsgi --log-file-
+web gunicorn ocrandsummarize.wsgi:application --log-file -
