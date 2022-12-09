@@ -11,16 +11,18 @@ import os
 
 # import Image from PIL to read image
 from PIL import Image
-
 from django.conf import settings
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+import json
+import urllib.request
+import sys
 # Create your views here.
 @csrf_exempt
 def index(request):
     text = ""
-    summarized_text = ""
     message = ""
+    eng_to_kor=""
     if request.method == 'POST':
         form = ImageUpload(request.POST, request.FILES)
         if form.is_valid():
@@ -31,9 +33,31 @@ def index(request):
                 path = settings.MEDIA_ROOT
                 pathz = path + "/images/" + image
 
-                text = pytesseract.image_to_string(Image.open(pathz))
+                text = pytesseract.image_to_string(Image.open(pathz), lang='kor+eng')
                 text = text.encode("ascii", "ignore")
                 text = text.decode()
+
+                # translate eng to kor through Papago API
+                client_id = "7cyuDLUY3kSNzmFs_i88" # 개발자센터에서 발급받은 Client ID 값
+                client_secret = "NMYcZYMSNp" # 개발자센터에서 발급받은 Client Secret 값
+                encText = urllib.parse.quote(text)
+                data = "source=en&target=ko&text=" + encText
+                url = "https://openapi.naver.com/v1/papago/n2mt"
+                request = urllib.request.Request(url)
+                request.add_header("X-Naver-Client-Id",client_id)
+                request.add_header("X-Naver-Client-Secret",client_secret)
+                response = urllib.request.urlopen(request, data=data.encode("utf-8"))
+                rescode = response.getcode()
+
+                if(rescode==200):
+                    response_body = response.read()
+                    result=response_body.decode('utf-8')
+                    d=json.loads(result)
+                    eng_to_kor = d['message']['result']['translatedText']
+                    # print(response_body)
+                    # print(eng_to_kor)
+                else:
+                    eng_to_kor = "error code: "+rescode
 
                 # Summary (0.1% of the original content).
                 # summarized_text = summarizer.summarize('',text, count=2)
@@ -43,8 +67,8 @@ def index(request):
 
     context = {
         'text': text,
-        'summarized_text': summarized_text,
-        'message': message
+        'message': message,
+        'eng_to_kor': eng_to_kor
     }
     # get(context)
     # return render(request, 'formpage.html', context)
