@@ -14,10 +14,10 @@ from pathlib import Path
 import os
 
 import dj_database_url
-import environ
+# import environ
 import django_heroku
-env=environ.Env()
-environ.Env.read_env()
+# env=environ.Env()
+# environ.Env.read_env()
 
 # from dotenv import load_dotenv
 #
