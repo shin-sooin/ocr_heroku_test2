@@ -4,7 +4,7 @@ from django.shortcuts import render
 import pytesseract
 
 # import summarize to summarize the ocred text
-from summarizer import summarizer
+#from summarizer import summarizer
 
 from .forms import ImageUpload
 import os
