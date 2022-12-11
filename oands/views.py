@@ -1,4 +1,6 @@
 from urllib import request as ur
+from urllib.request import urlopen
+
 import cloudinary.uploader
 from django.shortcuts import render
 
@@ -63,6 +65,7 @@ def index2(request):
         #         # print(eng_to_kor)
         #     else:
         #         eng_to_kor = "error code: "+rescode
+
     except:
         message = "check your filename and ensure it doesn't have any space or check if it has any text"
 
@@ -81,10 +84,11 @@ def index2(request):
 #     return JsonResponse(context)
 
 def img_open(imgUrl):
-    # request.urlopen()
-    res = ur.urlopen(imgUrl).read()
-    # Image open
-    img = Image.open(BytesIO(res))
+    # # request.urlopen()
+    # res = ur.urlopen(imgUrl).read()
+    # # Image open
+    # img = Image.open(BytesIO(res))
+    img=Image.open(urlopen(imgUrl))
     text = pytesseract.image_to_string(img, lang='kor+eng')
     text = text.encode("ascii", "ignore")
     text = text.decode()
