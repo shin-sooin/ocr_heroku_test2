@@ -42,7 +42,7 @@ def index(request):
                 # pathz = path + "/images/" + image
                 # image=request.POST.get('picture')
                 #image=request.FILES['image']
-
+                print(request.data['image'])
                 # request.urlopen()
                 res = request.urlopen(request.data['image']).read()
                 # Image open
