@@ -8,16 +8,11 @@ import pytesseract
 # import summarize to summarize the ocred text
 #from summarizer import summarizer
 
-from .forms import ImageUpload
-import os
 from rest_framework.decorators import api_view
-# import Image from PIL to read image
-from PIL import Image
-from django.conf import settings
 from django.http import HttpResponse, JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-import json
-import urllib.request
+# from django.views.decorators.csrf import csrf_exempt
+# import json
+# import urllib.request
 from io import BytesIO
 from PIL import Image
 #from django.http import HttpRequest as rq
