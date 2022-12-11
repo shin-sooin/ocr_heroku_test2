@@ -1,3 +1,4 @@
+import cloudinary.uploader
 from django.shortcuts import render
 
 # import pytesseract to convert text in image to string
@@ -31,11 +32,12 @@ def index(request):
             try:
                 form.save()
                 image = request.FILES['image'].decode('urf-8')
-                image = image.name
-                path = settings.MEDIA_ROOT
-                pathz = path + "/images/" + image
-
-                text = pytesseract.image_to_string(Image.open(pathz), lang='kor+eng')
+                # image = image.name
+                # path = settings.MEDIA_ROOT
+                # pathz = path + "/images/" + image
+                # image=request.POST.get('picture')
+                #image=request.FILES['image']
+                text = pytesseract.image_to_string(image, lang='kor+eng')
                 text = text.encode("ascii", "ignore")
                 text = text.decode()
 

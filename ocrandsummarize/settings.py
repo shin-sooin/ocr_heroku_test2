@@ -16,6 +16,12 @@ import os
 import dj_database_url
 # import environ
 import django_heroku
+
+# to upload image
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 # env=environ.Env()
 # environ.Env.read_env()
 
@@ -48,6 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'oands',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -132,6 +140,19 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 django_heroku.settings(locals())
 
+# to store image
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# CLOUDINARY_STORAGE={'CLOUD_NAME':",'API_KEY':",
+#                     'API_SECRET':}
+# CLOUDINARY_URL=cloudinary://my_key:my_secret@my_cloud_name
+cloudinary.config(
+    cloud_name = "dqagyxgzo",
+    api_key = "783595799343156",
+    api_secret = "AHCfGQZPkw879dLV60tU6w_mhGU"
+)
+CLOUDINARY_URL='cloudinary://783595799343156:AHCfGQZPkw879dLV60tU6w_mhGU@dqagyxgzo'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
