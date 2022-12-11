@@ -37,10 +37,10 @@ def index2(request):
     request_msg = ""
     try:
         request_msg = request.data['image']
-        img = img_open(request_msg)
-        text = pytesseract.image_to_string(img, lang='kor+eng')
-        text = text.encode("ascii", "ignore")
-        text = text.decode()
+        text = img_open(request_msg)
+        # text = pytesseract.image_to_string(img, lang='kor+eng')
+        # text = text.encode("ascii", "ignore")
+        # text = text.decode()
 
         #     # translate eng to kor through Papago API
         #     client_id = "7cyuDLUY3kSNzmFs_i88" # 개발자센터에서 발급받은 Client ID 값
@@ -85,4 +85,8 @@ def img_open(imgUrl):
     res = ur.urlopen(imgUrl).read()
     # Image open
     img = Image.open(BytesIO(res))
-    return img
+    text = pytesseract.image_to_string(img, lang='kor+eng')
+    text = text.encode("ascii", "ignore")
+    text = text.decode()
+    print(text)
+    return text
