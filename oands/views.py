@@ -16,6 +16,8 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 import urllib.request
+
+import base64
 import sys
 # Create your views here.
 @csrf_exempt
@@ -28,7 +30,7 @@ def index(request):
         if form.is_valid():
             try:
                 form.save()
-                image = request.FILES['image']
+                image = request.FILES['image'].decode('urf-8')
                 image = image.name
                 path = settings.MEDIA_ROOT
                 pathz = path + "/images/" + image
