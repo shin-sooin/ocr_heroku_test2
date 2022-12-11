@@ -32,6 +32,7 @@ def index(request):
     text = ""
     message = ""
     eng_to_kor=""
+    print("jnkkdfp-----------------")
     if request.method == 'POST':
         #form = ImageUpload(request.POST, request.FILES)
         #if form.is_valid():
