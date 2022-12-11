@@ -39,10 +39,10 @@ def index2(request):
     request_msg = ""
     try:
         request_msg = request.data['image']
-        text = img_open(request_msg)
-        # text = pytesseract.image_to_string(img, lang='kor+eng')
-        # text = text.encode("ascii", "ignore")
-        # text = text.decode()
+        img = img_open(request_msg)
+        text = pytesseract.image_to_string(img, lang='kor+eng')
+        text = text.encode("ascii", "ignore")
+        text = text.decode()
 
         #     # translate eng to kor through Papago API
         #     client_id = "7cyuDLUY3kSNzmFs_i88" # 개발자센터에서 발급받은 Client ID 값
@@ -66,8 +66,8 @@ def index2(request):
         #     else:
         #         eng_to_kor = "error code: "+rescode
 
-    except:
-        message = "check your filename and ensure it doesn't have any space or check if it has any text"
+    except Exception as e:
+        message = 'exception: '+e
 
     context = {
         'text': text,
@@ -84,13 +84,12 @@ def index2(request):
 #     return JsonResponse(context)
 
 def img_open(imgUrl):
-    # # request.urlopen()
-    # res = ur.urlopen(imgUrl).read()
-    # # Image open
-    # img = Image.open(BytesIO(res))
-    img=Image.open(urlopen(imgUrl))
-    text = pytesseract.image_to_string(img, lang='kor+eng')
-    text = text.encode("ascii", "ignore")
-    text = text.decode()
-    print(text)
-    return text
+    # request.urlopen()
+    res = ur.urlopen(imgUrl).read()
+    # Image open
+    img = Image.open(BytesIO(res))
+    #img=Image.open(urlopen(imgUrl))
+    # text = pytesseract.image_to_string(img, lang='kor+eng')
+    # text = text.encode("ascii", "ignore")
+    # text = text.decode()
+    return img
