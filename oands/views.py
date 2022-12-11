@@ -96,3 +96,4 @@ def img_open(imgUrl):
     res = request.urlopen(imgUrl).read()
     # Image open
     img = Image.open(BytesIO(res))
+    return img
