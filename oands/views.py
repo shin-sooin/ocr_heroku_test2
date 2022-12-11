@@ -33,7 +33,8 @@ def index(request):
         if form.is_valid():
             try:
                 form.save()
-                image = request.FILES['image']
+                image = base64.b64encode(request.FILES['image'])
+
                 image = image.name
                 # path = settings.MEDIA_ROOT
                 # pathz = path + "/images/" + image
