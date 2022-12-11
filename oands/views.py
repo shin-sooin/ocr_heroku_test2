@@ -82,7 +82,8 @@ def index(request):
     context = {
         'text': text,
         'message': message,
-        'eng_to_kor': eng_to_kor
+        'eng_to_kor': eng_to_kor,
+        'request_msg': request_msg
     }
     # get(context)
     # return render(request, 'formpage.html', context)
