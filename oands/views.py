@@ -17,6 +17,8 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 import urllib.request
+from io import BytesIO
+from PIL import Image
 
 import base64
 import sys
@@ -31,13 +33,15 @@ def index(request):
         if form.is_valid():
             try:
                 form.save()
-                image = request.FILES['image'].decode('urf-8')
-                # image = image.name
+                image = request.FILES['image']
+                image = image.name
                 # path = settings.MEDIA_ROOT
                 # pathz = path + "/images/" + image
                 # image=request.POST.get('picture')
                 #image=request.FILES['image']
-                text = pytesseract.image_to_string(image, lang='kor+eng')
+                im=Image.open(BytesIO(base64.b64decode(image)))
+
+                text = pytesseract.image_to_string(im, lang='kor+eng')
                 text = text.encode("ascii", "ignore")
                 text = text.decode()
 
