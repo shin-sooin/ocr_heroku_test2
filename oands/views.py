@@ -44,7 +44,7 @@ def index(request):
                 # image=request.POST.get('picture')
                 #image=request.FILES['image']
                 #print(requests.data['image'])
-                request_msg=request
+                request_msg=request.data
 
                 img=img_open(request.data['image'])
                 text = pytesseract.image_to_string(img, lang='kor+eng')
