@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eabaed7a-ec8c-4dfd-a2aa-9983b7864941" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oands/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/oands/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oands/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/oands/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ocrandsummarize/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ocrandsummarize/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +189,7 @@
       <workItem from="1670735005379" duration="305000" />
       <workItem from="1670735329377" duration="10000" />
       <workItem from="1670735382763" duration="57000" />
-      <workItem from="1670736528560" duration="2291000" />
+      <workItem from="1670736528560" duration="2473000" />
     </task>
     <servers />
   </component>
