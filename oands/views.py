@@ -33,10 +33,10 @@ def index(request):
     message = ""
     eng_to_kor=""
     if request.method == 'POST':
-        form = ImageUpload(request.POST, request.FILES)
-        if form.is_valid():
+        #form = ImageUpload(request.POST, request.FILES)
+        #if form.is_valid():
             try:
-                form.save()
+                #form.save()
                 # image = image.name
                 # path = settings.MEDIA_ROOT
                 # pathz = path + "/images/" + image
