@@ -1,3 +1,5 @@
+from urllib import request
+
 import cloudinary.uploader
 from django.shortcuts import render
 
@@ -8,7 +10,7 @@ import pytesseract
 
 from .forms import ImageUpload
 import os
-
+from rest_framework.decorators import api_view
 # import Image from PIL to read image
 from PIL import Image
 from django.conf import settings
@@ -28,8 +30,11 @@ import sys
 # Create your views here.
 
 # connect with firebase
-@csrf_exempt
+@api_view(['GET','POST'])
 def index(request):
+    if request.method=='POST':
+        return index2(request)
+def index2(request):
     text = ""
     message = ""
     eng_to_kor=""
@@ -45,12 +50,12 @@ def index(request):
                 # image=request.POST.get('picture')
                 #image=request.FILES['image']
                 #print(requests.data['image'])
-                request_msg=request.data.get('image')
+                request_msg=request.POST.get('image')
 
-                # img=img_open(request.data['image'])
-                # text = pytesseract.image_to_string(img, lang='kor+eng')
-                # text = text.encode("ascii", "ignore")
-                # text = text.decode()
+                img=img_open(request.data['image'])
+                text = pytesseract.image_to_string(img, lang='kor+eng')
+                text = text.encode("ascii", "ignore")
+                text = text.decode()
 
             #     # translate eng to kor through Papago API
             #     client_id = "7cyuDLUY3kSNzmFs_i88" # 개발자센터에서 발급받은 Client ID 값
@@ -92,9 +97,9 @@ def index(request):
 # def get(context):
 #     return JsonResponse(context)
 
-# def img_open(imgUrl):
-#     # request.urlopen()
-#     res = request.urlopen(imgUrl).read()
-#     # Image open
-#     img = Image.open(BytesIO(res))
-#     return img
+def img_open(imgUrl):
+    # request.urlopen()
+    res = request.urlopen(imgUrl).read()
+    # Image open
+    img = Image.open(BytesIO(res))
+    return img
