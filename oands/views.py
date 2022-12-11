@@ -34,23 +34,14 @@ def index2(request):
     message = ""
     eng_to_kor=""
     request_msg=""
-    if request.method == 'POST':
-        #form = ImageUpload(request.POST, request.FILES)
-        #if form.is_valid():
-            try:
-                #form.save()
-                # image = image.name
-                # path = settings.MEDIA_ROOT
-                # pathz = path + "/images/" + image
-                # image=request.POST.get('picture')
-                #image=request.FILES['image']
-                #print(requests.data['image'])
-                request_msg=request.POST.get('image')
+    try:
+        request_msg=request.data['image']
+        img = img_open(request_msg)
+        text = pytesseract.image_to_string(img, lang='kor+eng')
+        text = text.encode("ascii", "ignore")
+        text = text.decode()
 
-                img=img_open(request.data['image'])
-                text = pytesseract.image_to_string(img, lang='kor+eng')
-                text = text.encode("ascii", "ignore")
-                text = text.decode()
+
 
             #     # translate eng to kor through Papago API
             #     client_id = "7cyuDLUY3kSNzmFs_i88" # 개발자센터에서 발급받은 Client ID 값
@@ -73,15 +64,11 @@ def index2(request):
             #         # print(eng_to_kor)
             #     else:
             #         eng_to_kor = "error code: "+rescode
-            #
-            #     # Summary (0.1% of the original content).
-            #     # summarized_text = summarizer.summarize('',text, count=2)
-            #     # os.remove(pathz)
-            except:
-                message = "check your filename and ensure it doesn't have any space or check if it has any text"
+    except:
+        message = "check your filename and ensure it doesn't have any space or check if it has any text"
 
     context = {
-        # 'text': text,
+        'text': text,
         # 'message': message,
         # 'eng_to_kor': eng_to_kor,
         'request_msg': request_msg
