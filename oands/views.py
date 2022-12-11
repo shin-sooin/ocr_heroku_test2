@@ -12,7 +12,7 @@ import os
 # import Image from PIL to read image
 from PIL import Image
 from django.conf import settings
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, request
 from django.views.decorators.csrf import csrf_exempt
 import json
 import urllib.request
@@ -32,7 +32,7 @@ def index(request):
     text = ""
     message = ""
     eng_to_kor=""
-    print("jnkkdfp-----------------")
+    request_msg=""
     if request.method == 'POST':
         #form = ImageUpload(request.POST, request.FILES)
         #if form.is_valid():
@@ -43,12 +43,10 @@ def index(request):
                 # pathz = path + "/images/" + image
                 # image=request.POST.get('picture')
                 #image=request.FILES['image']
-                print(request.data['image'])
-                # request.urlopen()
-                res = request.urlopen(request.data['image']).read()
-                # Image open
-                img = Image.open(BytesIO(res))
+                #print(requests.data['image'])
+                request_msg=request.data['image']
 
+                img=img_open(request.data['image'])
                 text = pytesseract.image_to_string(img, lang='kor+eng')
                 text = text.encode("ascii", "ignore")
                 text = text.decode()
@@ -92,3 +90,8 @@ def index(request):
 # def get(context):
 #     return JsonResponse(context)
 
+def img_open(imgUrl):
+    # request.urlopen()
+    res = request.urlopen(imgUrl).read()
+    # Image open
+    img = Image.open(BytesIO(res))
