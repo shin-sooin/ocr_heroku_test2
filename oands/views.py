@@ -3,7 +3,6 @@ from django.shortcuts import render
 
 # import pytesseract to convert text in image to string
 import pytesseract
-
 # import summarize to summarize the ocred text
 #from summarizer import summarizer
 
@@ -20,9 +19,14 @@ import urllib.request
 from io import BytesIO
 from PIL import Image
 
-import base64
+import time
+#file='https://firebasestorage.googleapis.com/v0/b/ocr-test2-9b5be.appspot.com/images%2Fexxx.png?alt=media'
+#file2 = 'https://firebasestorage.googleapis.com/v0/b/ocr-test2-9b5be.appspot.com/o/images%2Fexxx.png?alt=media&token=018185c4-b4d7-4ae6-8bb4-1bc127d55da0'
+# storage = firebase.storage()
 import sys
 # Create your views here.
+
+# connect with firebase
 @csrf_exempt
 def index(request):
     text = ""
@@ -33,16 +37,18 @@ def index(request):
         if form.is_valid():
             try:
                 form.save()
-                image = base64.b64encode(request.FILES['image'])
-
-                image = image.name
+                # image = image.name
                 # path = settings.MEDIA_ROOT
                 # pathz = path + "/images/" + image
                 # image=request.POST.get('picture')
                 #image=request.FILES['image']
-                im=Image.open(BytesIO(base64.b64decode(image)))
 
-                text = pytesseract.image_to_string(im, lang='kor+eng')
+                # request.urlopen()
+                res = request.urlopen(request.data['image']).read()
+                # Image open
+                img = Image.open(BytesIO(res))
+
+                text = pytesseract.image_to_string(img, lang='kor+eng')
                 text = text.encode("ascii", "ignore")
                 text = text.decode()
 
