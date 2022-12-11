@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="eabaed7a-ec8c-4dfd-a2aa-9983b7864941" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oands/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/oands/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,12 +21,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/shinsooin/PycharmProjects/ocrandsummarize_heroku_test"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/shinsooin/PycharmProjects/ocrandsummarize_heroku_test&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="DjangoTestsConfigurationType">
       <module name="ocr" />
@@ -187,7 +186,9 @@
       <workItem from="1670731003371" duration="869000" />
       <workItem from="1670734662733" duration="160000" />
       <workItem from="1670734844238" duration="17000" />
-      <workItem from="1670735005379" duration="183000" />
+      <workItem from="1670735005379" duration="305000" />
+      <workItem from="1670735329377" duration="10000" />
+      <workItem from="1670735382763" duration="8000" />
     </task>
     <servers />
   </component>
