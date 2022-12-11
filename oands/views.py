@@ -18,6 +18,7 @@ import json
 import urllib.request
 from io import BytesIO
 from PIL import Image
+from django.http import HttpRequest as rq
 
 import time
 #file='https://firebasestorage.googleapis.com/v0/b/ocr-test2-9b5be.appspot.com/images%2Fexxx.png?alt=media'
@@ -28,7 +29,7 @@ import sys
 
 # connect with firebase
 @csrf_exempt
-def index(request):
+def index(request: rq):
     text = ""
     message = ""
     eng_to_kor=""
@@ -44,7 +45,7 @@ def index(request):
                 # image=request.POST.get('picture')
                 #image=request.FILES['image']
                 #print(requests.data['image'])
-                request_msg=request.data
+                request_msg=request.data['image']
 
                 img=img_open(request.data['image'])
                 text = pytesseract.image_to_string(img, lang='kor+eng')
