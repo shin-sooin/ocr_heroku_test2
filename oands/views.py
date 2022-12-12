@@ -21,12 +21,16 @@ from io import BytesIO
 from PIL import Image
 # from django.http import HttpRequest as rq
 
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import storage
+
+
 import time
 # file='https://firebasestorage.googleapis.com/v0/b/ocr-test2-9b5be.appspot.com/images%2Fexxx.png?alt=media'
 # file2 = 'https://firebasestorage.googleapis.com/v0/b/ocr-test2-9b5be.appspot.com/o/images%2Fexxx.png?alt=media&token=018185c4-b4d7-4ae6-8bb4-1bc127d55da0'
 # storage = firebase.storage()
 import sys
-
 
 # Create your views here.
 
@@ -45,6 +49,7 @@ def index2(request):
     try:
         request_msg = request.data['image']
         text = img_open(str(request_msg))
+
 
         # text = pytesseract.image_to_string(img, lang='kor+eng')
         # text = text.encode("ascii", "ignore")
@@ -91,21 +96,21 @@ def index2(request):
 #     return JsonResponse(context)
 
 def img_open(imgUrl):
-    # # request.urlopen()
-    # res = ur.urlopen(imgUrl).read()
-    # # Image open
-    # f=io.BytesIO(res)
-    # img=Image.open(f)
-    # # img = Image.open(BytesIO(res))
-    # #img = Image.open(img)
-    # # img=Image.open(urlopen(imgUrl))
-    # text = pytesseract.image_to_string(img, lang='kor+eng')
+    # request.urlopen()
+    res = ur.urlopen(imgUrl).read()
+    # Image open
+    f=io.BytesIO(res)
+    img=Image.open(f)
+    # img = Image.open(BytesIO(res))
+    #img = Image.open(img)
+    # img=Image.open(urlopen(imgUrl))
+    text = pytesseract.image_to_string(img, lang='kor+eng')
     # text = text.encode("ascii", "ignore")
     # text = text.decode()
-    # return text
-    urlretrieve(imgUrl, 'ex.png')
-    img=PIL.Image.open('ex.png')
-    text = pytesseract.image_to_string(img, lang='kor+eng')
-    return str(text)
+    return text
+    # urlretrieve(imgUrl, 'ex.png')
+    # img=PIL.Image.open('ex.png')
+    # text = pytesseract.image_to_string(img, lang='kor+eng')
+    # return str(text)
 
 
