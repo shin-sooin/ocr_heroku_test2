@@ -106,6 +106,6 @@ def img_open(imgUrl):
     urlretrieve(imgUrl, 'ex.png')
     img=PIL.Image.open('ex.png')
     text = pytesseract.image_to_string(img, lang='kor+eng')
-    return text
+    return str(text)
 
 
