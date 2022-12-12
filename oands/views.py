@@ -10,6 +10,10 @@ import pytesseract
 
 from rest_framework.decorators import api_view
 from django.http import HttpResponse, JsonResponse
+import PIL
+import urllib.request as ur
+import io
+from urllib.request import urlretrieve
 # from django.views.decorators.csrf import csrf_exempt
 # import json
 # import urllib.request
@@ -87,16 +91,21 @@ def index2(request):
 #     return JsonResponse(context)
 
 def img_open(imgUrl):
-    # request.urlopen()
-    res = ur.urlopen(imgUrl).read()
-    # Image open
-    f=io.BytesIO(res)
-    img=Image.open(f)
-    # img = Image.open(BytesIO(res))
-    #img = Image.open(img)
-    # img=Image.open(urlopen(imgUrl))
+    # # request.urlopen()
+    # res = ur.urlopen(imgUrl).read()
+    # # Image open
+    # f=io.BytesIO(res)
+    # img=Image.open(f)
+    # # img = Image.open(BytesIO(res))
+    # #img = Image.open(img)
+    # # img=Image.open(urlopen(imgUrl))
+    # text = pytesseract.image_to_string(img, lang='kor+eng')
+    # text = text.encode("ascii", "ignore")
+    # text = text.decode()
+    # return text
+    urlretrieve(imgUrl, 'ex.png')
+    img=PIL.Image.open('ex.png')
     text = pytesseract.image_to_string(img, lang='kor+eng')
-    text = text.encode("ascii", "ignore")
-    text = text.decode()
     return text
+
 
