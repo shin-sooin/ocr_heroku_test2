@@ -66,15 +66,15 @@ def index2(request):
         #     else:
         #         eng_to_kor = "error code: "+rescode
 
-    except Exception as e:
-        message = 'exception: '+e
+    except:
+        message = 'please check file contains text'
 
     context = {
         'text': text,
         'message': message,
         # 'eng_to_kor': eng_to_kor,
         'request_msg': request_msg,
-        'img_requested':str(img)
+        'img_requested': str(img)
     }
     # get(context)
     # return render(request, 'formpage.html', context)
@@ -89,7 +89,7 @@ def img_open(imgUrl):
     res = ur.urlopen(imgUrl).read()
     # Image open
     img = Image.open(BytesIO(res))
-    #img=Image.open(urlopen(imgUrl))
+    # img=Image.open(urlopen(imgUrl))
     # text = pytesseract.image_to_string(img, lang='kor+eng')
     # text = text.encode("ascii", "ignore")
     # text = text.decode()
