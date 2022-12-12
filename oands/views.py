@@ -1,3 +1,4 @@
+import io
 from urllib import request as ur
 from urllib.request import urlopen
 
@@ -89,10 +90,13 @@ def img_open(imgUrl):
     # request.urlopen()
     res = ur.urlopen(imgUrl).read()
     # Image open
-    #img = Image.open(BytesIO(res))
+    f=io.BytesIO(res)
+    img=Image.open(f)
+    # img = Image.open(BytesIO(res))
     #img = Image.open(img)
-    img=Image.open(urlopen(imgUrl))
+    # img=Image.open(urlopen(imgUrl))
     text = pytesseract.image_to_string(img, lang='kor+eng')
     text = text.encode("ascii", "ignore")
     text = text.decode()
     return text
+
