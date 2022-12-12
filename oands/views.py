@@ -73,7 +73,8 @@ def index2(request):
         'text': text,
         'message': message,
         # 'eng_to_kor': eng_to_kor,
-        'request_msg': request_msg
+        'request_msg': request_msg,
+        'img_requested':str(img)
     }
     # get(context)
     # return render(request, 'formpage.html', context)
