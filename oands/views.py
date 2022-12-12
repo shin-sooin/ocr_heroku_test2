@@ -40,6 +40,7 @@ def index2(request):
     try:
         request_msg = request.data['image']
         img = img_open(request_msg)
+
         text = pytesseract.image_to_string(img, lang='kor+eng')
         text = text.encode("ascii", "ignore")
         text = text.decode()
@@ -89,6 +90,7 @@ def img_open(imgUrl):
     res = ur.urlopen(imgUrl).read()
     # Image open
     img = Image.open(BytesIO(res))
+    img = Image.open(img)
     # img=Image.open(urlopen(imgUrl))
     # text = pytesseract.image_to_string(img, lang='kor+eng')
     # text = text.encode("ascii", "ignore")
