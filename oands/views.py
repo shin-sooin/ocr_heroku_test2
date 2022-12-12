@@ -44,7 +44,7 @@ def index2(request):
     request_msg = ""
     try:
         request_msg = request.data['image']
-        text = img_open(request_msg)
+        text = str(img_open(request_msg))
 
         # text = pytesseract.image_to_string(img, lang='kor+eng')
         # text = text.encode("ascii", "ignore")
