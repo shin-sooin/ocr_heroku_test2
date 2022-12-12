@@ -46,6 +46,7 @@ def index2(request):
     message = ""
     eng_to_kor = ""
     request_msg = ""
+    error = ""
     try:
         request_msg = request.data['image']
         text = img_open(str(request_msg))
@@ -77,14 +78,16 @@ def index2(request):
         #     else:
         #         eng_to_kor = "error code: "+rescode
 
-    except:
+    except Exception as e:
         message = 'please check file contains text'
+        error = str(e)
 
     context = {
         'text': text,
         'message': message,
         # 'eng_to_kor': eng_to_kor,
         'request_msg': request_msg,
+        'error' : error
         #'img_requested': str(img)
     }
     # get(context)
