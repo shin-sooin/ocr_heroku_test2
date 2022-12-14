@@ -45,12 +45,12 @@ def index2(request):
     text = ""
     message = ""
     eng_to_kor = ""
-    request_msg = ""
+    request_img = ""
     error = ""
     try:
-        request_msg = request.data['image']
-        text = img_open(str(request_msg))
-
+        request_img = request.data['image']
+        request_img=request_img.replace("\/","/")
+        text = img_open(str(request_img))
 
         # text = pytesseract.image_to_string(img, lang='kor+eng')
         # text = text.encode("ascii", "ignore")
@@ -78,16 +78,15 @@ def index2(request):
         #     else:
         #         eng_to_kor = "error code: "+rescode
 
-    except Exception as e:
+    except:
         message = 'please check file contains text'
-        error = str(e)
 
     context = {
         'text': text,
         'message': message,
         # 'eng_to_kor': eng_to_kor,
-        'request_msg': request_msg,
-        'error' : error
+        'request_img': request_img,
+        # 'error' : error
         #'img_requested': str(img)
     }
     # get(context)
